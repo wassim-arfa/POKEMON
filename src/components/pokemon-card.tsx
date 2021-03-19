@@ -1,16 +1,20 @@
 import React, { FunctionComponent } from 'react';
 import Pokemon from '../models/pokemon';
 import formatType from '../helpers/format-type';
+import { useHistory } from 'react-router';
 
 type Props = {
     pokemon: Pokemon,
 };
 
 const PokemonCard: FunctionComponent<Props> = ({ pokemon }) => {
-
+const history = useHistory();
+const goTopokemon= (id:number)=>{
+history.push(`/pokemons/${id}`)   
+}
     return (
 
-        <div className="card horizontal">
+        <div className="card horizontal hoverable" onClick={()=>goTopokemon(pokemon.id)}>
             <div className="card-image">
                 <img className="responsive-img" src={pokemon.picture} alt={pokemon.name} />
             </div>
